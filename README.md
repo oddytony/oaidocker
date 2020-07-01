@@ -1,37 +1,26 @@
 # Docker Setup - Automated Scripts Installation
-ENB and EPC entities can be a single container, however the logical scalable architecture perspective, it is better to be single EPC and many ENB containers.
-
+The components of the EPC can be built in multiple containers but this project builds the EPC in a single container 
+And ENB in a separate container. This is good for scaling in a distributed ENB system
 ## Required Software
 > $ docker --version
 
-> Docker version 18.09.0, build 4d60db4
-
-> $ docker-compose --version
-
-> docker-compose version 1.23.1, build b02f1306
-
-## Note:
-While executing the eNB/EPC if there is a issue like gtp not found. please follow the below mentioned steps. This happens only in 
-Version of Ubuntu server 16.04, upto kernel version 14.10. The lowlatency kernel can be found by searching the kernel module gtp.ko that is required to execute the gateway module. 
-
-## if the above is successful, type in the below command and check for gtp and udp_tunnel displayed as below
-> $ lsmod | grep gtp  #< Lists more information about gtp and related udp tunnel can be obtained:>
-
-> gtp 28672 0
-
-> udp_tunnel 16384 1 gtp
+> Docker
+> Docker-compose
+> linux (Ubuntu)
 
 ## Please following the steps for Openairinterface5g (EPC & ENB)
 
 > $ cd /root
 
-> $ git clone https://github.com/kansk/openairinterface5g.git
+> $ git clone https://github.com/oddytony/oaidocker.git
 
 > $ cd /root/openairinterface5g/oai
 
 > $ chmod 777 launch.sh 
 
 > $ ./launch.sh
+
+## if you get errors during the chmod command, you are probably having permission errors or there is something wrong with your file system
 
 ## After few seconds, Rx/Tx Lights in the B200 should glow.
 
