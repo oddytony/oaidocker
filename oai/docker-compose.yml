@@ -4,7 +4,7 @@ services:
   epc:
     cap_add:
      - ALL
-    image: openairinterface/epc_latest:latest
+    image: openairinterface/epc:latest
     hostname: epc
     container_name: epc
     privileged: true
@@ -22,7 +22,7 @@ services:
     tty: true
 
   enb:
-    image: openairinterface/enb_latest:latest
+    image: openairinterface/enb:latest
     hostname: enb
     depends_on:
      - epc
